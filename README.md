@@ -238,5 +238,5 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) for deta
 ## Contact
 
 - **Author:** Nidhi Pandya
-- **Email:** nidhip1606@gmail.com
+- **Email:** nidhipandya1606@gmail.com
 - **GitHub:** [@nidhip1611](https://github.com/nidhip1611)
