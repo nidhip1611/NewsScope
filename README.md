@@ -113,9 +113,12 @@ Each article is annotated with:
 
 ### Download
 
-Benchmark release (annotations + URLs, no article text): **TBD**
+Download the benchmark from [GitHub Releases](https://github.com/nidhip1611/NewsScope/releases/tag/v1.0.0):
 
-Will be added to GitHub Releases upon arXiv submission.
+1. Download `benchmark.zip`
+2. Extract to `data/benchmark/`
+
+The benchmark includes annotations and article URLs only (no full text due to copyright).
 
 > **Copyright Note:** We release annotations and article URLs only (no full text) to respect copyright. Evidence snippets are kept brief (<100 words) for fair use.
 
