@@ -2,7 +2,9 @@
 
 ## Overview
 
-NewsScope contains **395 news articles** across 4 domains with structured annotations for claim extraction evaluation.
+NewsScope contains **455 news articles** for claim extraction evaluation:
+- **395 in-domain articles** across 4 domains
+- **60 out-of-source articles** for generalization testing
 
 ## Dataset Statistics
 
@@ -10,8 +12,8 @@ NewsScope contains **395 news articles** across 4 domains with structured annota
 |-------|----------|-------------|
 | Training | 315 | For model fine-tuning |
 | In-domain Test | 80 | Same sources as training |
-| Out-of-source Test | 60 | New sources for generalization testing |
-| **Total** | **395** | |
+| Out-of-source Test | 60 | New sources for generalization |
+| **Total** | **455** | |
 
 ## Domain Distribution
 
