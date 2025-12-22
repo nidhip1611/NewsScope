@@ -65,7 +65,7 @@ base_model = AutoModelForCausalLM.from_pretrained(
 )
 
 # Load LoRA adapter
-model = PeftModel.from_pretrained(base_model, "nidhip1611/newsscope-lora")
+model = PeftModel.from_pretrained(base_model, "nidhipandya/NewsScope-lora")
 tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3.1-8B-Instruct")
 
 # Extract claims from article
@@ -238,5 +238,5 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) for deta
 ## Contact
 
 - **Author:** Nidhi Pandya
-- **Email:** nidhipandya1606@gmail.com
+- **Email:** nidhip1606@gmail.com
 - **GitHub:** [@nidhip1611](https://github.com/nidhip1611)
