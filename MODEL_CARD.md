@@ -34,7 +34,9 @@ NewsScope is a LoRA adapter for LLaMA 3.1 8B Instruct, fine-tuned to extract str
 | Schema Validity | 98.8% | 100% |
 | Politics Accuracy | **94.3%** | 87.8% |
 
-**The accuracy gap is not statistically significant (p=0.07).**
+**Statistical Test:** Unpaired bootstrap (10,000 resamples) yields 95% CI [-1.51, 10.15], p=0.07. The difference is not statistically significant at α=0.05.
+
+> **Note:** Accuracy computed on verifiable claims only (excluding UNCLEAR).
 
 ## Training Details
 
@@ -67,7 +69,7 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3.1-8B-Instruct
 # Prepare prompt
 article = "Your news article text here..."
 prompt = f"""Extract structured information from this news article.
-Return valid JSON with: domain, headline, key_points, entities, timeline, claims.
+Return valid JSON with: domain, headline, key_points, whos_involved, how_it_unfolded, claims.
 
 Article:
 {article}
@@ -76,12 +78,7 @@ JSON Output:"""
 
 # Generate
 inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-outputs = model.generate(
-    **inputs,
-    max_new_tokens=2000,
-    temperature=0.3,
-    do_sample=True
-)
+outputs = model.generate(**inputs, max_new_tokens=2000, temperature=0.3, do_sample=True)
 result = tokenizer.decode(outputs[0], skip_special_tokens=True)
 print(result)
 ```
@@ -94,10 +91,13 @@ The model outputs JSON with:
   "domain": "politics|health|science_env|business",
   "headline": "Neutral headline (10-200 chars)",
   "key_points": ["point1", "point2", "point3"],
-  "entities": [{"name": "...", "role": "..."}],
-  "timeline": [{"date": "...", "event": "..."}],
+  "whos_involved": [{"name": "Person Name", "role": "Title/Role"}],
+  "how_it_unfolded": [{"date": "2025-01-15", "event": "Description"}],
   "claims": [
-    {"claim": "Verifiable statement", "evidence": "From article"}
+    {
+      "claim_text": "Verifiable statement",
+      "evidence_from_article": "Supporting text from article"
+    }
   ]
 }
 ```
@@ -108,20 +108,6 @@ The model outputs JSON with:
 - **Numeric precision:** May occasionally misstate numbers (use numeric grounding filter)
 - **Business domain:** Lower accuracy (80.4%) compared to other domains
 - **No verification:** Extracts claims but does not verify against external sources
-
-## Numeric Grounding Filter
-
-For improved accuracy, apply post-processing:
-```python
-import re
-
-def check_numeric_grounding(claim, article):
-    numbers = re.findall(r'\b\d+\.?\d*%?\b', claim)
-    for num in numbers:
-        if num not in article:
-            return False, num
-    return True, None
-```
 
 ## Intended Use
 
@@ -134,16 +120,16 @@ def check_numeric_grounding(claim, article):
 
 ## Citation
 ```bibtex
-@article{pandya2024newsscope,
-  title={NewsScope: Schema-Grounded Cross-Domain News Claim Extraction},
+@article{pandya2025newsscope,
+  title={NewsScope: Schema-Grounded Cross-Domain News Claim Extraction with Open Models},
   author={Pandya, Nidhi},
   journal={arXiv preprint},
-  year={2024}
+  year={2025}
 }
 ```
 
 ## Links
 
-- **Paper:** [arXiv](https://arxiv.org/abs/2024.XXXXX)
+- **Paper:** [arXiv](https://arxiv.org/abs/TBD)
 - **Code:** [GitHub](https://github.com/nidhip1611/newsscope)
 - **Author:** [Nidhi Pandya](https://github.com/nidhip1611)

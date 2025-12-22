@@ -1,0 +1,4 @@
+# Additional requirements for running GPT-4o-mini baseline
+# Install separately: pip install -r requirements-baseline.txt
+
+openai>=1.0.0,<2.0.0
