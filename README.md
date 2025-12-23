@@ -18,6 +18,27 @@ NewsScope is a cross-domain news claim extraction system that:
 
 **Key Finding:** The accuracy gap between our open model and GPT-4o-mini is **not statistically significant** (unpaired bootstrap, p=0.07, 95% CI includes 0).
 
+## Quickstart
+
+```bash
+# Clone and install
+git clone https://github.com/nidhip1611/NewsScope.git
+cd NewsScope
+pip install -r requirements.txt
+
+# Download benchmark from GitHub Releases
+wget https://github.com/nidhip1611/NewsScope/releases/download/v1.0.0/benchmark.zip
+unzip benchmark.zip -d data/benchmark/
+
+# Run inference on sample article
+python scripts/run_inference.py --file examples/article.txt
+
+# Run evaluation (requires predictions file)
+python scripts/run_eval.py --predictions predictions.jsonl --benchmark data/benchmark/test_indomain.jsonl
+```
+
+> **Note:** Inference requires accepting the [LLaMA license](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct) and running `huggingface-cli login`.
+
 ## Results
 
 | Model | Accuracy | Contradiction Rate | Decisiveness |
