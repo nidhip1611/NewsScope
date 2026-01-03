@@ -10,7 +10,7 @@
 
 If you discover a security vulnerability, please report it by emailing:
 
-**nidhip1606@gmail.com**
+**nidhipandya1606@gmail.com**
 
 Please do not open a public GitHub issue for security vulnerabilities.
 
