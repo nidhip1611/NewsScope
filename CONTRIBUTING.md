@@ -35,4 +35,4 @@ Thank you for your interest in contributing to NewsScope!
 
 ## Questions?
 
-Open an issue or contact the author at nidhip1606@gmail.com
+Open an issue or contact the author at nidhipandya606@gmail.com
